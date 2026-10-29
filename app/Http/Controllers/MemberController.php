@@ -8,7 +8,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 class MemberController extends Controller {
-    private $api_key = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImFkMDk5NjljLTJkN2ItNDc0Yi1iMjg3LTllOWI3NThiZGUwYyIsImlhdCI6MTU5ODEyMzc0MCwic3ViIjoiZGV2ZWxvcGVyLzVlMTdjMzA2LTM0MmEtZDdkOC0zODE0LTQ1OTNhMjllODUyYyIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyIyNy4zNC4xNi4xOSJdLCJ0eXBlIjoiY2xpZW50In1dfQ.PMlJYKEtMCvyzsn0ZmuR7b097kZmea9QegzPmxjpObcpiQEaWpywVLZnMAEkwQe8CIBVz2eTFYjbvmxq0CtBcw';
+    // The Clash Royale API key comes from .env (CLASH_ROYALE_API_KEY), never from the code.
+    private $api_key;
+
+    public function __construct() {
+        $this->api_key = config( 'services.clash_royale.key' );
+    }
 
     public function index() {
         $allCards = $this->getCardInfo();

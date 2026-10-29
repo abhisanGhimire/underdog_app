@@ -30,4 +30,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+
+    'clash_royale' => [
+        'key' => env( 'CLASH_ROYALE_API_KEY' ),
+    ],
+
 ];
